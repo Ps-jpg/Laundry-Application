@@ -1,0 +1,76 @@
+{
+  "project_info": {
+    "project_number": "845107868342",
+    "project_id": "laundry-1553d",
+    "storage_bucket": "laundry-1553d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845107868342:android:a6feb25610a4b89030ec17",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1bVDd_Icz7cFswBx-HI863VGPnRSOyAg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845107868342:android:71b12577a36f2d0130ec17",
+        "android_client_info": {
+          "package_name": "com.android.foodex"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1bVDd_Icz7cFswBx-HI863VGPnRSOyAg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845107868342:android:ce79e45b31a9f86130ec17",
+        "android_client_info": {
+          "package_name": "com.example.SmartLaundry"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845107868342-3dmm6pf0ib63cht1n0js3gi8vdlls351.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.SmartLaundry",
+            "certificate_hash": "10ed3798372a3620ddfa9e1033edc75aaff8dc45"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1bVDd_Icz7cFswBx-HI863VGPnRSOyAg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

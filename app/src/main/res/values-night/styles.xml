@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- res/values-night/styles.xml -->
+
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
+        <item name="colorPrimary">#1E88E5</item> <!-- Dark Blue -->
+        <item name="colorPrimaryDark">#1565C0</item> <!-- Slightly darker blue for status bar -->
+        <item name="colorAccent">#FF4081</item> <!-- Accent color (e.g., pink) -->
+        <item name="titleTextColor">#FFFFFF</item> <!-- Title text color (white) -->
+        <item name="android:textColorPrimary">#FFFFFF</item> <!-- Primary text color (white) -->
+        <item name="android:textColorSecondary">#CCCCCC</item> <!-- Secondary text color (light gray) -->
+    </style>
+    <style name="Widget.AppTheme.MyView" parent="">
+        <item name="android:background">@color/gray_600</item>
+        <item name="exampleColor">@color/light_blue_600</item>
+    </style>
+
+
+</resources>

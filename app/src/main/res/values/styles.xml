@@ -1,0 +1,19 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <!-- res/values-night/styles.xml -->
+    <!-- res/values-night/styles.xml -->
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
+        <item name="colorPrimary">#37474F</item>
+        <item name="colorPrimaryDark">#263238</item>
+        <item name="colorAccent">#FF4081</item>
+        <item name="titleTextColor">#FFFFFF</item>
+        <item name="android:textColorPrimary">@color/textColorPrimaryDark</item>
+        <item name="android:textColorSecondary">@color/textColorSecondaryDark</item>
+    </style>
+    <style name="Widget.AppTheme.MyView" parent="">
+        <item name="android:background">@color/gray_400</item>
+        <item name="exampleColor">@color/light_blue_400</item>
+    </style>
+
+</resources>

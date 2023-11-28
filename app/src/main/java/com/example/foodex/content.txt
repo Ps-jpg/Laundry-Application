@@ -1,0 +1,1104 @@
+About.java
+package com.example.foodex;
+
+import android.os.Bundle;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class About extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_about);
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("About");
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+    }
+}
+ApplicationClass.java
+package com.example.foodex;
+
+import android.app.Application;
+
+import java.util.ArrayList;
+
+public class ApplicationClass extends Application {
+    public static ArrayList<ItemList> item;
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        item=new ArrayList<ItemList>();
+        item.add(new ItemList("Dress","28","dress"));
+        item.add(new ItemList("Formal","22","formal"));
+        item.add(new ItemList("Hoodie","28","hoodie"));
+        item.add(new ItemList("Jeans","24","jeans"));
+        item.add(new ItemList("Jumpsuit","22","jumpsuit"));
+        item.add(new ItemList("Skirt","26","skirt"));
+        item.add(new ItemList("Sportswear","28","sportwear"));
+        item.add(new ItemList("Traditional","25","traditional"));
+        item.add(new ItemList("T-shirt","27","tshirt"));
+        item.add(new ItemList("Western Wear","28","westernwear"));
+
+
+
+
+    }
+}
+Confirm.java
+package com.example.foodex;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+public class Confirm extends AppCompatActivity {
+    Button btnTrack;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_confirm);
+        btnTrack=findViewById(R.id.btnTrack);
+
+        btnTrack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Confirm.this, TrackOrder.class);
+                startActivity(intent);
+            }
+        });
+    }
+}
+DryAnimation.java
+package com.example.foodex;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class DryAnimation extends AppCompatActivity {
+    Button btnDryNext;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_dry_animation);
+
+        btnDryNext=findViewById(R.id.btnDryNext);
+
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("Smart Laundry Application    ");
+
+        btnDryNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(DryAnimation.this, Menu.class);
+                startActivity(intent);
+            }
+        });
+    }
+}
+FindStore.java
+package com.example.foodex;
+
+import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+public class FindStore extends AppCompatActivity {
+    Button btnStore;
+    EditText etStoreName;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_find_store);
+        btnStore=findViewById(R.id.btnStore);
+        etStoreName=findViewById(R.id.etStoreName);
+        btnStore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String location=etStoreName.getText().toString().trim();
+                Intent intent=new Intent(Intent.ACTION_VIEW, Uri.parse("geo:0,0?q="+location));
+                startActivity(intent);
+
+            }
+        });
+
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("Smart Laundry Application");
+    }
+}
+Home.java
+package com.example.foodex;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.firebase.auth.FirebaseAuth;
+
+public class Home extends AppCompatActivity {
+    Button btnWash,btnLocation,btnDry,btnIron;
+    ImageView btnAbout;
+    FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+        btnWash=findViewById(R.id.btnWash);
+        btnLocation=findViewById(R.id.btnLocation);
+        btnIron=findViewById(R.id.btnIron);
+        btnDry=findViewById(R.id.btnDry);
+        btnAbout=findViewById(R.id.btnAbout);
+
+        btnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Home.this, About.class);
+                startActivity(intent);
+            }
+        });
+
+        btnIron.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Home.this, IronAnimation.class);
+                startActivity(intent);
+            }
+        });
+        btnDry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Home.this, DryAnimation.class);
+                startActivity(intent);
+
+            }
+        });
+        btnLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Home.this, LocationAnimation.class);
+                startActivity(intent);
+
+            }
+        });
+        btnWash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Home.this, WashAnimation.class);
+                startActivity(intent);
+            }
+        });
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("Home");
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+        actionBar.setTitle("Home");
+
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu) {
+        getMenuInflater().inflate(R.menu.home,menu);
+        return super.onCreateOptionsMenu(menu);
+
+    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId()== R.id.logout)
+        {
+
+            FirebaseAuth.getInstance().signOut();
+            Intent intent=new Intent(Home.this,MainActivity.class);
+            startActivity(intent);
+            Toast.makeText(this,"Logout",Toast.LENGTH_SHORT);
+
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+}
+IronAnimation.java
+package com.example.foodex;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class IronAnimation extends AppCompatActivity {
+    Button btnIronNext;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_iron_animation);
+
+        btnIronNext=findViewById(R.id.btnDryNext);
+
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("Smart Laundry Application    ");
+
+        btnIronNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(IronAnimation.this, Menu.class);
+                startActivity(intent);
+            }
+        });
+    }
+}
+ItemList.java
+package com.example.foodex;
+
+public class ItemList {
+    private String ItemName;
+    private String ItemPrice;
+    private String Make;
+
+    public ItemList(String itemName, String itemPrice, String make) {
+        ItemName = itemName;
+        ItemPrice = itemPrice;
+        Make = make;
+    }
+
+    public String getItemName() {
+        return ItemName;
+    }
+
+    public void setItemName(String itemName) {
+        ItemName = itemName;
+    }
+
+    public String getItemPrice() {
+        return ItemPrice;
+    }
+
+    public void setItemPrice(String itemPrice) {
+        ItemPrice = itemPrice;
+    }
+
+    public String getMake() {
+        return Make;
+    }
+
+    public void setMake(String make) {
+        this.Make = make;
+    }
+}
+ItemListAdapter.java
+package com.example.foodex;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+
+public class ItemListAdapter extends RecyclerView.Adapter<ItemListAdapter.ViewHolder> {
+
+    private ArrayList<ItemList> item;
+
+
+    ItemClicked activity;
+
+
+    public interface ItemClicked
+    {
+        void onItemClicked(int index);
+    }
+    public ItemListAdapter(Context context, ArrayList<ItemList>list)
+    {
+        item=list;
+        activity=(ItemClicked)context;
+    }
+    public class ViewHolder extends RecyclerView.ViewHolder
+    {
+        ImageView ivMake;
+        TextView tvItem,tvPrice;
+
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
+            ivMake=itemView.findViewById(R.id.ivMake);
+            tvItem=itemView.findViewById(R.id.tvItem);
+            tvPrice=itemView.findViewById(R.id.tvPrice);
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    activity.onItemClicked(item.indexOf((ItemList) v.getTag()));
+
+
+                }
+            });
+
+
+        }
+    }
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.row_layout,parent,false);
+        return new ViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        holder.itemView.setTag(item.get(position));
+        holder.tvPrice.setText(item.get(position).getItemPrice());
+        holder.tvItem.setText(item.get(position).getItemName());
+
+        if(item.get(position).getMake().equals("dress"))
+        {
+            holder.ivMake.setImageResource(R.drawable.dress);
+        }
+
+        else if(item.get(position).getMake().equals("formal"))
+        {
+            holder.ivMake.setImageResource(R.drawable.formal);
+        }
+
+        else if(item.get(position).getMake().equals("hoodie"))
+        {
+            holder.ivMake.setImageResource(R.drawable.hoodie);
+        }
+
+        else if(item.get(position).getMake().equals("jeans"))
+        {
+            holder.ivMake.setImageResource(R.drawable.jeans);
+        }
+
+        else if(item.get(position).getMake().equals("jumpsuit"))
+        {
+            holder.ivMake.setImageResource(R.drawable.jumpsuit);
+        }
+
+        else if(item.get(position).getMake().equals("skirt"))
+        {
+            holder.ivMake.setImageResource(R.drawable.skirt);
+        }
+
+        else if(item.get(position).getMake().equals("westernwear"))
+        {
+            holder.ivMake.setImageResource(R.drawable.westernwear);
+        }
+
+        else if(item.get(position).getMake().equals("sportwear"))
+        {
+            holder.ivMake.setImageResource(R.drawable.sportwear);
+        }
+
+        else if(item.get(position).getMake().equals("tshirt"))
+        {
+            holder.ivMake.setImageResource(R.drawable.tshirt);
+        }
+        else
+        {
+            holder.ivMake.setImageResource(R.drawable.traditional);
+        }
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return item.size();
+    }
+}
+LocationAnimation.java
+package com.example.foodex;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class LocationAnimation extends AppCompatActivity {
+    Button btnLocNext;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_location_animation);
+
+        btnLocNext=findViewById(R.id.btnDryNext);
+
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("Smart Laundry Application    ");
+
+        btnLocNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(LocationAnimation.this, FindStore.class);
+                startActivity(intent);
+            }
+        });
+    }
+}
+MainActivity.java
+package com.example.foodex;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+public class MainActivity extends AppCompatActivity {
+    Button btnLogIn;
+    EditText etEmail,etPassword;
+    TextView tvSign;
+    FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth.AuthStateListener mAuthStateListener;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        tvSign=findViewById(R.id.tvSign);
+        btnLogIn=findViewById(R.id.btnLogIn);
+        etEmail=findViewById(R.id.etEmail);
+        etPassword=findViewById(R.id.etPassword);
+        mFirebaseAuth=FirebaseAuth.getInstance();
+        mAuthStateListener=new FirebaseAuth.AuthStateListener() {
+
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser mFirebasebaseUser=mFirebaseAuth.getCurrentUser();
+                if (mFirebasebaseUser!=null)
+                {
+                    Toast.makeText(MainActivity.this,"You are Logged In",Toast.LENGTH_SHORT).show();
+                    Intent intent=new Intent(MainActivity.this,Home.class);
+                    startActivity(intent);
+                }
+                else
+                {
+                    Toast.makeText(MainActivity.this,"Please Log In",Toast.LENGTH_SHORT).show();
+                }
+            }
+        };
+
+
+        tvSign.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(MainActivity.this,SignUp.class);
+                startActivity(intent);
+            }
+        });
+        btnLogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = etEmail.getText().toString().trim();
+                String password = etPassword.getText().toString().trim();
+                if (email.isEmpty()) {
+                    etEmail.setError("Please Enter Email ID");
+                    etEmail.requestFocus();
+                } else if (password.isEmpty()) {
+                    etPassword.setError("Please Enter Password");
+                    etPassword.requestFocus();
+                } else if (email.isEmpty() && password.isEmpty()) {
+                    Toast.makeText(MainActivity.this, "Fields are Empty", Toast.LENGTH_SHORT).show();
+                } else if (!(email.isEmpty() && password.isEmpty())) {
+                    mFirebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(MainActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (!task.isSuccessful()) {
+                                Toast.makeText(MainActivity.this, "Login Error, Please Login Again", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Intent intent = new Intent(MainActivity.this, Home.class);
+                                startActivity(intent);
+                            }
+                        }
+                    });
+
+
+                } else {
+                    Toast.makeText(MainActivity.this, " Error Occurred", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+
+    }
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
+    }
+}
+Menu.java
+package com.example.foodex;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
+public class Menu extends AppCompatActivity implements ItemListAdapter.ItemClicked {
+    Button btnHome,btnOrder,btnConfirm,btnBack;
+    TextView tvItem,tvPrice;
+    TextView tvPlus,tvMinus,tvQuantity;
+
+
+
+    ImageView ivMake;
+    FragmentManager fragmentManager;
+    Fragment buttonFrag,listFrag,OrderDetailFrag;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_menu);
+        btnHome=findViewById(R.id.btnHome);
+        btnOrder=findViewById(R.id.btnOrder);
+        tvItem=findViewById(R.id.tvItem);
+        tvPrice=findViewById(R.id.tvPrice);
+        ivMake=findViewById(R.id.ivMake);
+        tvPlus=findViewById(R.id.tvPlus);
+        tvMinus=findViewById(R.id.tvMinus);
+        tvQuantity=findViewById(R.id.tvQuantity);
+        btnBack=findViewById(R.id.btnBack);
+
+        tvPlus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String number=tvQuantity.getText().toString().trim();
+                String price=tvPrice.getText().toString().trim();
+                int quntity=Integer.parseInt(number);
+                int Amount=Integer.parseInt(price);
+                int perAmount=Amount/quntity;
+                quntity=quntity+1;
+                Amount=perAmount*quntity;
+                tvQuantity.setText(String.valueOf(quntity));
+                tvPrice.setText(String.valueOf(Amount));}
+
+
+        });
+        tvMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String number=tvQuantity.getText().toString().trim();
+                String price=tvPrice.getText().toString().trim();
+                int quntity=Integer.parseInt(number);
+                int Amount=Integer.parseInt(price);
+                int perAmount=Amount/quntity;
+                if(quntity<2)
+                {
+                    Toast.makeText(Menu.this,"Wrong Attempt",Toast.LENGTH_SHORT).show();}
+                else
+                {
+                    quntity=quntity-1;
+                    Amount=Amount-perAmount;
+                    tvPrice.setText(String.valueOf(Amount));
+                    tvQuantity.setText(String.valueOf(quntity));
+
+
+
+
+
+                }
+
+            }
+        });
+        ActionBar actionBar=getSupportActionBar();
+        // actionBar.setSubtitle("Welcome to our App");
+        actionBar.setTitle("Smart Laundry Application    ");
+        actionBar.setDisplayUseLogoEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
+
+        btnConfirm=findViewById(R.id.btnConfirm);
+        btnConfirm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Menu.this, Payment.class);
+                startActivity(intent);
+            }
+        });
+        fragmentManager=getSupportFragmentManager();
+        listFrag=fragmentManager.findFragmentById(R.id.listFrag);
+        buttonFrag=fragmentManager.findFragmentById(R.id.buttonFrag);
+        OrderDetailFrag=fragmentManager.findFragmentById(R.id.OrderDetailFrag);
+        fragmentManager.beginTransaction()
+                .show(listFrag)
+                .hide(OrderDetailFrag)
+                .show(buttonFrag)
+                .commit();
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Menu.this,Home.class);
+                startActivity(intent);
+
+
+            }
+        });
+
+
+        btnOrder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentManager.beginTransaction()
+                        .hide(listFrag)
+                        .show(OrderDetailFrag)
+                        .hide(buttonFrag)
+                        .commit();
+
+
+
+            }
+        });
+        btnBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                fragmentManager.beginTransaction()
+                        .show(listFrag)
+                        .hide(OrderDetailFrag)
+                        .show(buttonFrag)
+                        .commit();
+
+            }
+        });
+        onItemClicked(0);
+    }
+
+
+    @Override
+    public void onItemClicked(int index) {
+        tvPrice.setText(ApplicationClass.item.get(index).getItemPrice());
+        tvItem.setText(ApplicationClass.item.get(index).getItemName());
+
+        if(ApplicationClass.item.get(index).getMake().equals("dress"))
+        {
+            ivMake.setImageResource(R.drawable.dress);
+        }
+        else if(ApplicationClass.item.get(index).getMake().equals("hoodie"))
+        {
+            ivMake.setImageResource(R.drawable.hoodie);
+        }
+        else if(ApplicationClass.item.get(index).getMake().equals("skirt"))
+        {
+            ivMake.setImageResource(R.drawable.skirt);
+        }
+        else if(ApplicationClass.item.get(index).getMake().equals("traditional"))
+        {
+            ivMake.setImageResource(R.drawable.traditional);
+        }
+        else if(ApplicationClass.item.get(index).getMake().equals("westernwear"))
+        {
+            ivMake.setImageResource(R.drawable.westernwear);
+        }
+
+
+        else if(ApplicationClass.item.get(index).getMake().equals("sportwear"))
+        {
+            ivMake.setImageResource(R.drawable.sportwear);
+        }
+        else if(ApplicationClass.item.get(index).getMake().equals("jumpsuit"))
+        {
+            ivMake.setImageResource(R.drawable.jumpsuit);
+        }
+        else if(ApplicationClass.item.get(index).getMake().equals("jeans"))
+        {
+            ivMake.setImageResource(R.drawable.jeans);
+        }
+        else if(ApplicationClass.item.get(index).getMake().equals("formal"))
+        {
+            ivMake.setImageResource(R.drawable.formal);
+        }
+
+
+        else
+        {
+            ivMake.setImageResource(R.drawable.tshirt);
+        }
+
+
+    }
+}
+MenuButtonFrag.java
+package com.example.foodex;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class MenuButtonFrag extends Fragment {
+
+    public MenuButtonFrag() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_menu_button, container, false);
+    }
+}
+MenuListFrag.java
+package com.example.foodex;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class MenuListFrag extends Fragment {
+    RecyclerView recyclerView;
+    RecyclerView.Adapter myAdapter;
+    RecyclerView.LayoutManager layoutManager;
+    View view;
+
+    public MenuListFrag() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        view= inflater.inflate(R.layout.fragment_menu_list, container, false);
+        return view;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        recyclerView=view.findViewById(R.id.list);
+        recyclerView.setHasFixedSize(true);
+        layoutManager=new LinearLayoutManager(this.getActivity());
+        recyclerView.setLayoutManager(layoutManager);
+        myAdapter=new ItemListAdapter(this.getActivity(),ApplicationClass.item);
+        recyclerView.setAdapter(myAdapter);
+    }
+}
+OrderDetailsFrag.java
+package com.example.foodex;
+
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import androidx.fragment.app.Fragment;
+
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class OrderDetailsFrag extends Fragment {
+
+    public OrderDetailsFrag() {
+        // Required empty public constructor
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_order_details, container, false);
+    }
+}
+Payment.java
+package com.example.foodex;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class Payment extends AppCompatActivity {
+    Button btnPay;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_payment);
+        btnPay=findViewById(R.id.btnPay);
+        ActionBar actionBar=getSupportActionBar();
+        // actionBar.setSubtitle("Welcome to our App");
+        actionBar.setTitle("Payment   ");
+
+
+        btnPay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(Payment.this, PaymentAnimation.class);
+                startActivity(intent);
+            }
+        });
+
+    }
+}
+PaymentAnimation.java
+package com.example.foodex;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class PaymentAnimation extends AppCompatActivity {
+    Button btnNext;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_payment_animation);
+        btnNext=findViewById(R.id.btnNext);
+
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("Smart Laundry Application    ");
+
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(PaymentAnimation.this, Confirm.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+    }
+}
+SignUp.java
+package com.example.foodex;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
+public class SignUp extends AppCompatActivity {
+    Button btnSignUp;
+    TextView tvLog;
+    EditText etName,etEmail,etPassword;
+    FirebaseAuth mfirebaseAuth;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_sign_up);
+        tvLog=findViewById(R.id.tvLog);
+        btnSignUp=findViewById(R.id.btnSingUp);
+        etEmail=findViewById(R.id.etEmail);
+        etName=findViewById(R.id.etName);
+        etPassword=findViewById(R.id.etPassword);
+        mfirebaseAuth=FirebaseAuth.getInstance();
+        tvLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(SignUp.this,MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name=etName.getText().toString().trim();
+                String email=etEmail.getText().toString().trim();
+                String password=etPassword.getText().toString().trim();
+                if(name.isEmpty())
+                {
+                    etName.setError("Please Enter Your Name");
+                    etName.requestFocus();
+                }
+                else if(email.isEmpty())
+                {
+                    etEmail.setError("Please Enter Email ID");
+                    etEmail.requestFocus();
+                }
+                else if(password.isEmpty())
+                {
+                    etPassword.setError("Please Enter Password");
+                    etPassword.requestFocus();
+                }
+                else if(email.isEmpty() && password.isEmpty() && name.isEmpty())
+                {
+                    Toast.makeText(SignUp.this,"Fields are Empty",Toast.LENGTH_SHORT).show();
+                }
+                else if(!(email.isEmpty() && password.isEmpty() && name.isEmpty()))
+                {
+                    mfirebaseAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if(!task.isSuccessful())
+                            {
+                                Toast.makeText(SignUp.this,"Sign Up Unsuccessful, Please Try Again",Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                            {
+                                Intent intent=new Intent(SignUp.this,MainActivity.class);
+                                startActivity(intent);
+                            }
+                        }
+                    });
+                }
+                else
+                {
+                    Toast.makeText(SignUp.this,"Error Occurred!",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+}
+TrackOrder.java
+package com.example.foodex;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.widget.Button;
+
+public class TrackOrder extends AppCompatActivity {
+
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_track_order);
+
+        ActionBar actionBar=getSupportActionBar();
+        // actionBar.setSubtitle("Welcome to our App");
+        actionBar.setTitle(" Track Order   ");
+
+
+
+
+
+    }
+
+
+}
+WashAnimation.java
+package com.example.foodex;
+
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class WashAnimation extends AppCompatActivity {
+    Button btnWashNext;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_wash_animation);
+        btnWashNext=findViewById(R.id.btnWashNext);
+
+        ActionBar actionBar=getSupportActionBar();
+        actionBar.setTitle("Smart Laundry Application    ");
+
+        btnWashNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(WashAnimation.this, Menu.class);
+                startActivity(intent);
+            }
+        });
+    }
+}
