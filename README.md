@@ -1,10 +1,88 @@
-# Laundry-Application
-server side beta - https://laundry-1553d.web.app/
-Laundry App Made with Firebase.
-"Welcome to our laundry app! Our Android application is all about making your laundry experience a breeze. You have the power to schedule pickup and drop-off times at your convenience, and you can even add special instructions to customize your order.
+# Laundry App
+This Repo is for app (Client Side)
+To Access Server-side beta: [Laundry App](https://laundry-1553d.web.app/)
 
-Securing your information is our top priority, and that's why we've chosen Firebase Cloud as our database solution. It ensures your data is stored safely and can be accessed seamlessly whenever you need it.
+## Overview
+Welcome to our laundry app! Our Android application is designed to make your laundry experience seamless. With the app, you can:
 
-When it comes to payments, we've integrated Razorpay for a smooth and secure transaction process. Don't worry—it's using dummy data for now, so you can test it out without any real transactions.
+- **Schedule Pickup and Drop-off:** Choose convenient times for your laundry pickup and drop-off.
+- **Add Special Instructions:** Customize your order by adding notes for special care.
 
-In a nutshell, our simple and smart app is here to provide you with a hassle-free laundry experience. Enjoy the convenience, flexibility, and security it brings to your laundry routine. Download now and make laundry day a whole lot easier!"
+We prioritize your data security by using **Firebase Cloud** to store your information safely. 
+
+For payments, we've integrated **Razorpay** to ensure a smooth and secure transaction process (using dummy data for testing).
+
+### Key Features:
+- **Firebase Cloud Integration:** Secure data storage and easy access.
+- **Razorpay Integration:** Smooth transaction process using dummy data for test runs.
+- **Convenient Scheduling:** Choose pickup and drop-off times that suit your schedule.
+- **User-Friendly Interface:** Simple and intuitive UI to enhance user experience.
+
+## UI Screenshots
+
+### Cart Activity
+![Cart Activity](ui/cart%20activity.jpeg)
+
+### Dry Clean Animation
+![Dry Clean Animation](ui/dry%20clean%20anim.jpeg)
+
+### Generated Bill
+![Generated Bill](ui/generated%20bill.jpeg)
+
+### Item Selected (Dress)
+![Item Selected Dress](ui/item%20selected%20dress.jpeg)
+
+### Items Menu
+![Items Menu](ui/items%20menu.jpeg)
+
+### Items Menu (Alternative View)
+![Items Menu 2](ui/items%20menu%202.jpeg)
+
+### Login Screen
+![Login Screen](ui/login.jpeg)
+
+### Main Menu
+![Main Menu](ui/menu.jpeg)
+
+### Order History
+![Order History](ui/order%20history.jpeg)
+
+### Payment Screen
+![Payment Screen](ui/payment.jpeg)
+
+### Payment Success
+![Payment Success](ui/payment%20success.jpeg)
+
+### Pickup Details
+![Pickup Details](ui/pick%20detail.jpeg)
+
+### Server-Side Order History (Admin View)
+![Server-Side Order History](ui/server%20side%20order%20history%20admin.png)
+
+### Signup Screen
+![Signup Screen](ui/signup.jpeg)
+
+### Signup With Details
+![Signup With Details](ui/signup%20with%20detail.jpeg)
+
+### Track Order Animation
+![Track Order Animation](ui/track%20order%20anim.jpeg)
+
+### User Profile
+![User Profile](ui/user%20profile.jpeg)
+
+### Wash and Fold Animation
+![Wash and Fold Animation](ui/wash%20and%20fold%20animation.jpeg)
+
+## How to Use
+1. **Download the app** and create an account via the **Signup Screen**.
+2. **Login** using your credentials.
+3. **Schedule a pickup** and drop-off for your laundry from the **Menu**.
+4. Add special instructions if needed, and **view your order history** at any time.
+5. Securely process payment using **Razorpay** (test mode enabled).
+
+## Technology Stack
+- **Firebase:** Backend and data storage.
+- **Razorpay:** Payment gateway integration (dummy data).
+- **Android (Java/Kotlin):** Mobile app development.
+
