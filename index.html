@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laundry App</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fff3e0; 
+            color: #333;
+        }
+        header {
+            background: #ff9800; 
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        h1, h2, h3 {
+            color: #ff9800;
+        }
+        p {
+            line-height: 1.6;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .feature {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 1.5rem;
+            text-align: center;
+            width: 100%;
+            max-width: 300px;
+        }
+        .feature h3 {
+            margin-bottom: 1rem;
+        }
+        .feature p {
+            color: #666;
+        }
+        .screenshot {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .screenshot-slider img {
+            width: 80%; 
+            height: auto;
+            border-radius: 8px; 
+        }
+        footer {
+            background: #ff9800; 
+            color: white;
+            text-align: center;
+            padding: 0.5rem 0; 
+            position: relative;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Laundry App</h1>
+        <p>This Repo is for app (Client Side)</p>
+        <p>To Access Server-side beta: <a href="https://laundry-1553d.web.app/" style="color:white;">Laundry App</a></p>
+    </header>
+
+    <div class="container">
+        <section>
+            <h2>Overview</h2>
+            <p>Welcome to our laundry app! Our Android application is designed to make your laundry experience seamless. With the app, you can:</p>
+            
+            <ul>
+                <li><strong>Schedule Pickup and Drop-off:</strong> Choose convenient times for your laundry pickup and drop-off.</li>
+                <li><strong>Add Special Instructions:</strong> Customize your order by adding notes for special care.</li>
+                <li>We prioritize your data security by using <strong>Firebase Cloud</strong> to store your information safely.</li>
+                <li>For payments, we've integrated <strong>Razorpay</strong> to ensure a smooth and secure transaction process (using dummy data for testing).</li>
+            </ul>
+        </section>
+
+        <section class="features">
+            <h2>Key Features:</h2>
+            <div class="feature">
+                <h3>Firebase Cloud Integration</h3>
+                <p>Secure data storage and easy access.</p>
+            </div>
+            <div class="feature">
+                <h3>Razorpay Integration</h3>
+                <p>Smooth transaction process using dummy data for test runs.</p>
+            </div>
+            <div class="feature">
+                <h3>Convenient Scheduling</h3>
+                <p>Choose pickup and drop-off times that suit your schedule.</p>
+            </div>
+            <div class="feature">
+                <h3>User-Friendly Interface</h3>
+                <p>Simple and intuitive UI to enhance user experience.</p>
+            </div>
+        </section>
+
+        <section class="screenshot">
+            <h2>Screenshots</h2>
+            
+          <div class="screenshot-slider">
+              <div><img src="ui/cart%20activity.jpeg" alt="Cart Activity Screenshot"></div>
+              <div><img src="ui/dry%20clean%20anim.jpeg" alt="Dry Clean Animation Screenshot"></div>
+              <div><img src="ui/generated%20bill.jpeg" alt="Generated Bill Screenshot"></div>
+              <div><img src="ui/item%20selected%20dress.jpeg" alt="Item Selected Dress Screenshot"></div>
+          </div>
+
+        </section>
+
+        <section class="screenshot">
+          <h2>Demo Video</h2>
+          <video controls style="max-width:100%; height:auto;">
+              <source src="output/demo of gpay.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+          </video>
+      </section>
+
+    </div>
+
+    <footer>
+      <p>&copy; 2024 Parikshit Singh Rajwar. All rights reserved.</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+
+    <script>
+      $(document).ready(function(){
+          $('.screenshot-slider').slick({
+              dots: true,
+              infinite: true,
+              speed: 500,
+              autoplay: true, 
+              autoplaySpeed: 3000, 
+              fade: true,
+              cssEase: 'linear'
+          });
+      });
+    </script>
+
+</body>
+</html>
