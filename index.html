@@ -11,11 +11,11 @@
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            background-color: #fff3e0; 
+            background-color: #fff3e0;
             color: #333;
         }
         header {
-            background: #ff9800; 
+            background: #ff9800;
             color: white;
             padding: 1rem 0;
             text-align: center;
@@ -36,6 +36,7 @@
             flex-wrap: wrap;
             gap: 2rem;
             justify-content: center;
+            margin-bottom: 2rem;
         }
         .feature {
             background: white;
@@ -43,8 +44,8 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 1.5rem;
             text-align: center;
-            width: 100%;
-            max-width: 300px;
+            width: calc(33% - 1rem);
+            min-width: 250px;
         }
         .feature h3 {
             margin-bottom: 1rem;
@@ -57,15 +58,15 @@
             margin: 2rem 0;
         }
         .screenshot-slider img {
-            width: 80%; 
+            width: 80%;
             height: auto;
-            border-radius: 8px; 
+            border-radius: 8px;
         }
         footer {
-            background: #ff9800; 
+            background: #ff9800;
             color: white;
             text-align: center;
-            padding: 0.5rem 0; 
+            padding: 0.5rem 0;
             position: relative;
             width: 100%;
         }
@@ -93,27 +94,32 @@
 
         <section class="features">
             <h2>Key Features:</h2>
-            <div class="feature">
-                <h3>Firebase Cloud Integration</h3>
-                <p>Secure data storage and easy access.</p>
-            </div>
-            <div class="feature">
-                <h3>Razorpay Integration</h3>
-                <p>Smooth transaction process using dummy data for test runs.</p>
-            </div>
-            <div class="feature">
-                <h3>Convenient Scheduling</h3>
-                <p>Choose pickup and drop-off times that suit your schedule.</p>
-            </div>
-            <div class="feature">
-                <h3>User-Friendly Interface</h3>
-                <p>Simple and intuitive UI to enhance user experience.</p>
-            </div>
-        </section>
-
-        <section class="screenshot">
-            <h2>Screenshots</h2>
             
+          <div class="feature">
+              <h3>Firebase Cloud Integration</h3>
+              <p>Secure data storage and easy access.</p>
+          </div>
+
+          <div class="feature">
+              <h3>Razorpay Integration</h3>
+              <p>Smooth transaction process using dummy data for test runs.</p>
+          </div>
+
+          <div class="feature">
+              <h3>Convenient Scheduling</h3>
+              <p>Choose pickup and drop-off times that suit your schedule.</p>
+          </div>
+
+          <div class="feature">
+              <h3>User-Friendly Interface</h3>
+              <p>Simple and intuitive UI to enhance user experience.</p>
+          </div>
+
+      </section>
+
+      <section class="screenshot">
+          <h2>Screenshots</h2>
+          
           <div class="screenshot-slider">
               <div><img src="ui/cart%20activity.jpeg" alt="Cart Activity Screenshot"></div>
               <div><img src="ui/dry%20clean%20anim.jpeg" alt="Dry Clean Animation Screenshot"></div>
@@ -121,14 +127,6 @@
               <div><img src="ui/item%20selected%20dress.jpeg" alt="Item Selected Dress Screenshot"></div>
           </div>
 
-        </section>
-
-        <section class="screenshot">
-          <h2>Demo Video</h2>
-          <video controls style="max-width:100%; height:auto;">
-              <source src="output/demo of gpay.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-          </video>
       </section>
 
     </div>
@@ -146,8 +144,8 @@
               dots: true,
               infinite: true,
               speed: 500,
-              autoplay: true, 
-              autoplaySpeed: 3000, 
+              autoplay: true,
+              autoplaySpeed: 3000,
               fade: true,
               cssEase: 'linear'
           });
